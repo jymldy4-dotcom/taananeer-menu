@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منيو تنانير - أصالة التراث</title>
+    <!-- استدعاء خطوط عربية تراثية وعصرية من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f9f6f0; /* لون الورق العتيق أو عجين الخبز */
+            --primary: #8b3a2b; /* أحمر طابوقي / طيني (مستوحى من التنور) */
+            --gold: #c59b27; /* ذهبي معتق */
+            --dark-wood: #3e2723; /* بني خشبي غامق للنصوص */
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%238b3a2b" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            color: var(--dark-wood);
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 20px 15px;
+        }
+
+        /* ترويسة المطعم */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 3px double var(--gold);
+            position: relative;
+        }
+        
+        /* ترتيب الاسم مع أيقونات التنور */
+        .header h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* المسافة بين التنور والاسم */
+        }
+
+        /* تنسيق أيقونة التنور */
+        .tandoor-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin: 10px 0 0 0;
+            font-weight: 600;
+        }
+
+        /* عناوين الأقسام */
+        .section-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: center;
+            margin: 30px 0 20px;
+            position: relative;
+        }
+        
+        .section-title::before, .section-title::after {
+            content: ' ✦ ';
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* نظام المربعات الاحترافي */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* تصميم الكارت (البطاقة) */
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid #eaddc4;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background-color: var(--gold);
+            border-radius: 0 0 5px 5px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(139, 58, 43, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: var(--dark-wood);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            border: 1px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .card:hover .price-tag {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        /* تذييل الصفحة */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-bottom: 20px solid transparent;
+            border-top: 1px dashed var(--gold);
+            font-family: 'Aref Ruqaa', serif;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>
+            <!-- أيقونة التنور الأولى (يمين) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="tandoor-icon">
+                <!-- النار -->
+                <path d="M32 12 C28 12 26 2 32 0 C32 0 38 4 36 8 C36 8 34 6 32 12 Z" fill="#e67e22"/>
+                <path d="M28 12 C24 12 25 4 28 2 C28 2 31 6 29 8 C29 8 27 7 28 12 Z" fill="#f1c40f"/>
+                <!-- الفخار -->
+                <path d="M20 12 L14 28 C9 45 15 58 20 62 L44 62 C49 58 55 45 50 28 L44 12 Z" fill="#8b3a2b" stroke="#3e2723" stroke-width="2"/>
+                <!-- فتحة التنور -->
+                <ellipse cx="32" cy="12" rx="12" ry="3" fill="#3e2723"/>
+                <!-- خطوط الزخرفة على الفخار -->
+                <path d="M16 28 L48 28 M13 45 L51 45" stroke="#702e22" stroke-width="1.5"/>
+            </svg>
+
+            تنانير
+
+            <!-- أيقونة التنور الثانية (يسار) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="tandoor-icon">
+                <!-- النار -->
+                <path d="M32 12 C28 12 26 2 32 0 C32 0 38 4 36 8 C36 8 34 6 32 12 Z" fill="#e67e22"/>
+                <path d="M28 12 C24 12 25 4 28 2 C28 2 31 6 29 8 C29 8 27 7 28 12 Z" fill="#f1c40f"/>
+                <!-- الفخار -->
+                <path d="M20 12 L14 28 C9 45 15 58 20 62 L44 62 C49 58 55 45 50 28 L44 12 Z" fill="#8b3a2b" stroke="#3e2723" stroke-width="2"/>
+                <!-- فتحة التنور -->
+                <ellipse cx="32" cy="12" rx="12" ry="3" fill="#3e2723"/>
+                <!-- خطوط الزخرفة على الفخار -->
+                <path d="M16 28 L48 28 M13 45 L51 45" stroke="#702e22" stroke-width="1.5"/>
+            </svg>
+        </h1>
+        <p>مذاق شرقاطي أصيل من جمر التنور</p>
+    </div>
+
+    <!-- القسم الأول: قسم التنور والمقالي -->
+    <div class="section-title">من جمر التنور</div>
+    <div class="menu-grid">
+        <div class="card">
+            <h3>دجاج حي بالتنور</h3>
+            <div class="price-tag">14,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>نصف دجاج بالتنور</h3>
+            <div class="price-tag">8,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>سمك بالتنور</h3>
+            <div class="price-tag">10,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>سمك مقلي</h3>
+            <div class="price-tag">8,000 د.ع</div>
+        </div>
+    </div>
+
+    <!-- القسم الثاني: قسم الكص واللحوم -->
+    <div class="section-title">ركن الكص العراقي</div>
+    <div class="menu-grid">
+        <div class="card">
+            <h3>تشريب كص لحم</h3>
+            <div class="price-tag">8,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>كص عالتمن</h3>
+            <div class="price-tag">6,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>كص لحم</h3>
+            <div class="price-tag">3,500 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>نصف كيلو كص لحم</h3>
+            <div class="price-tag">17,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>كيلو كص لحم</h3>
+            <div class="price-tag">32,000 د.ع</div>
+        </div>
+    </div>
+
+    <!-- القسم الثالث: الأجنحة والجانبيات -->
+    <div class="section-title">الأجنحة والأطباق الجانبية</div>
+    <div class="menu-grid">
+        <div class="card">
+            <h3>نفر أجنحة</h3>
+            <div class="price-tag">6,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>كيلو أجنحة</h3>
+            <div class="price-tag">12,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>يابسة</h3>
+            <div class="price-tag">3,500د.ع</div> 
+        </div>
+    </div>
+
+    <!-- القسم الرابع: المشروبات -->
+    <div class="section-title">المشروبات والضيافة</div>
+    <div class="menu-grid">
+        <div class="card">
+            <h3>ماء</h3>
+            <div class="price-tag">250 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>بيبسي</h3>
+            <div class="price-tag">500 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>سفن</h3>
+            <div class="price-tag">500 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>بيبسي وسط</h3>
+            <div class="price-tag">750 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>سفن وسط</h3>
+            <div class="price-tag">750 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>لبن</h3>
+            <div class="price-tag">1,000 د.ع</div>
+        </div>
+        <div class="card">
+            <h3>جاي عراقي</h3>
+            <div class="price-tag">500 د.ع</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ألف عافية، نورتونا في تنانير ✦
+    </div>
+
+</body>
+</html>
